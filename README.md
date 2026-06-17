@@ -1,4 +1,4 @@
-# 🎓 CG Master – E Learning Platform
+# 🎓 CG Master – E Learning Web Platform
 
 > Sri Lanka's premier **Sinhala-medium** online learning platform — making quality tech education accessible to everyone.
 
