@@ -136,6 +136,6 @@ This project is currently developed by the **CG Master internal team**.
 
 ## 📄 License
 
-This is a **private repository**. All rights reserved © 2025 CG Master (Pvt) Ltd, Sri Lanka.
+This is a **private repository**.     All rights reserved      © 2025 CG Master (Pvt) Ltd, Sri Lanka.
 
 ---
