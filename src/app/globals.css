@@ -24,3 +24,41 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes scrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.animate-scroll-up {
+  animation: scrollUp 18s linear infinite;
+}
+
+.animate-scroll-up:hover {
+  animation-play-state: paused;
+}
+
+/* ===== WHATSAPP FLOATING BUTTON ===== */
+.whatsapp-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #25D366;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 13px 22px 13px 16px;
+  border-radius: 999px;
+  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.45), 0 2px 8px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-fab:hover {
+  transform: scale(1.07);
+  box-shadow: 0 12px 40px rgba(37, 211, 102, 0.6), 0 4px 12px rgba(0, 0, 0, 0.2);
+}
