@@ -1,36 +1,141 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎓 CG Master – E Learning Web Platform
 
-## Getting Started
+> Sri Lanka's premier **Sinhala-medium** online learning platform — making quality tech education accessible to everyone.
 
-First, run the development server:
+🌐 **Live Site:** [www.cgmaster.lk](https://www.cgmaster.lk)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 📌 About
+
+**CG Master** is a Sri Lankan e-learning startup dedicated to delivering high-quality technology education in the **Sinhala language**. Our mission is to break the language barrier in tech education and empower Sri Lankan learners to build real-world skills in their mother tongue.
+
+---
+
+## 🚀 Features
+
+- 🎥 Video-based course platform (Sinhala medium)
+- 🔐 Secure user authentication & role-based access
+- 📅 Live session scheduling with Zoom integration
+- 📁 Course content & media management
+- 👨‍🏫 Instructor & student dashboards
+- 📱 Fully responsive design
+
+---
+
+## 🛠️ Tech Stack
+
+| Part | Technology |
+|---|---|
+| Frontend + Backend | **Next.js 14** (App Router) |
+| Language | **TypeScript** |
+| Styling | **Tailwind CSS** |
+| Database | **PostgreSQL** |
+| ORM | **Prisma** |
+| Auth | **NextAuth.js** |
+| File Upload | **Cloudinary** |
+| Live Classes | **Zoom OAuth API** |
+
+---
+
+## 📁 Project Structure
+
+```
+cgmaster-web-platform/
+├── app/                  # Next.js App Router pages & layouts
+│   ├── (auth)/           # Auth routes (login, register)
+│   ├── (dashboard)/      # Student & instructor dashboards
+│   ├── api/              # API route handlers
+│   └── ...
+├── components/           # Reusable UI components
+├── lib/                  # Utility functions & config
+├── prisma/               # Prisma schema & migrations
+├── public/               # Static assets
+└── types/                # TypeScript type definitions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚙️ Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
 
-## Learn More
+- Node.js `v18+`
+- PostgreSQL database
+- Cloudinary account
+- Zoom OAuth app credentials
 
-To learn more about Next.js, take a look at the following resources:
+### Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# 1. Clone the repository
+git clone https://github.com/cgmasterlk/cgmaster-web-platform.git
+cd cgmaster-web-platform
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# 2. Install dependencies
+npm install
 
-## Deploy on Vercel
+# 3. Set up environment variables
+cp .env.example .env
+# Fill in your credentials in .env
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# 4. Set up the database
+npx prisma migrate dev
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# 5. Run the development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## 🔑 Environment Variables
+
+Create a `.env` file in the root directory with the following:
+
+```env
+# Database
+DATABASE_URL=
+
+# NextAuth
+NEXTAUTH_SECRET=
+NEXTAUTH_URL=
+
+# Cloudinary
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+
+# Zoom
+ZOOM_CLIENT_ID=
+ZOOM_CLIENT_SECRET=
+```
+
+---
+
+## 🤝 Contributing
+
+This project is currently developed by the **CG Master internal team**.
+
+1. Never push directly to `main`
+2. Create a new branch: `git checkout -b feature/your-feature-name`
+3. Commit your changes: `git commit -m "feat: add your feature"`
+4. Push to your branch: `git push origin feature/your-feature-name`
+5. Open a **Pull Request** and request a review from your supervisor
+
+### Branch Naming Convention
+
+| Type | Format | Example |
+|---|---|---|
+| New feature | `feature/name` | `feature/course-upload` |
+| Bug fix | `fix/name` | `fix/login-redirect` |
+| UI work | `ui/name` | `ui/dashboard-redesign` |
+
+---
+
+## 📄 License
+
+This is a **private repository**.     All rights reserved      © 2025 CG Master (Pvt) Ltd, Sri Lanka.
+
+---
