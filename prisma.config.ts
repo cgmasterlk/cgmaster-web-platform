@@ -11,6 +11,7 @@ export default defineConfig({
     seed: "tsx prisma/seed.ts",
   },
   datasource: {
+    url: connectionString,
     adapter: new PrismaPg({ connectionString }),
   },
 });
