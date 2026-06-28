@@ -1,6 +1,17 @@
 import Image from "next/image";
+import { PrismaClient } from "@prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
 
-export default function Home() {
+const connectionString = process.env.DATABASE_URL!;
+const adapter = new PrismaPg({ connectionString });
+const prisma = new PrismaClient({ adapter });
+
+export default async function Home() {
+
+    const courses = await prisma.course.findMany({
+    orderBy: { createdAt: "desc" }
+  });
+
   return (
     <main className="min-h-screen bg-white">
 
@@ -71,77 +82,43 @@ export default function Home() {
 
 
       {/* ===== COURSES SECTION ===== */}
-      <section id="courses" className="py-20 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">අපගේ පාඨමාලා</h2>
-            <p className="text-gray-500">සජීවී Zoom පන්ති හරහා විශේෂඥ ගුරුවරුන්ගෙන් ඉගෙනගන්න</p>
+        <section id="courses" className="py-20 px-6 bg-gray-50">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-3">අපගේ පාඨමාලා</h2>
+              <p className="text-gray-500">සජීවී Zoom පන්ති හරහා විශේෂඥ ගුරුවරුන්ගෙන් ඉගෙනගන්න</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {courses.map(course => (
+                <div key={course.id} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+                  {course.thumbnail ? (
+                    <img src={course.thumbnail} alt={course.title} className="w-full h-40 object-cover" />
+                  ) : (
+                    <div className="bg-gradient-to-br from-purple-500 to-purple-700 h-40 flex items-center justify-center">
+                      <span className="text-6xl">🎨</span>
+                    </div>
+                  )}
+                  <div className="p-5">
+                    <span className={`text-xs font-semibold px-2 py-1 rounded-full ${course.status === "active" ? "bg-green-100 text-green-600" : "bg-yellow-100 text-yellow-600"}`}>
+                      {course.status === "active" ? "දැන් සජීවීව" : "ඉක්මනින් එනවා"}
+                    </span>
+                    <h3 className="text-gray-900 font-bold text-lg mt-2 mb-1">{course.title}</h3>
+                    <p className="text-gray-500 text-sm mb-4 line-clamp-2">{course.description || ""}</p>
+                    {course.status === "active" ? (
+                      <a href={`/courses/${course.id}`} className="block text-center bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold py-2 rounded-lg transition-colors">
+                        පාඨමාලාව බලන්න
+                      </a>
+                    ) : (
+                      <button disabled className="w-full bg-gray-200 text-gray-400 text-sm font-semibold py-2 rounded-lg cursor-not-allowed">
+                        ඉක්මනින් එනවා
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-            {/* Blender */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
-              <div className="bg-gradient-to-br from-purple-500 via-violet-600 to-indigo-700 h-40 flex items-center justify-center">
-                <span className="text-6xl">🎨</span>
-              </div>
-              <div className="p-5">
-                <span className="bg-green-100 text-green-600 text-xs font-semibold px-2 py-1 rounded-full">දැන් සජීවීව</span>
-                <h3 className="text-gray-900 font-bold text-lg mt-2 mb-1">Blender 3D</h3>
-                <p className="text-gray-500 text-sm mb-4">3D මොඩලින්, ඇනිමේෂන් සහ රෙන්ඩරින් ඉගෙනගන්න</p>
-                <a href="/courses/blender" className="block text-center bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 text-white text-sm font-semibold py-2.5 rounded-xl transition-all shadow-md shadow-purple-500/30 hover:shadow-lg hover:shadow-purple-500/40">
-                  පාඨමාලාව බලන්න
-                </a>
-              </div>
-            </div>
-
-            {/* AI */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden opacity-70">
-              <div className="bg-gradient-to-br from-blue-400 to-blue-600 h-40 flex items-center justify-center">
-                <span className="text-6xl">🤖</span>
-              </div>
-              <div className="p-5">
-                <span className="bg-yellow-100 text-yellow-600 text-xs font-semibold px-2 py-1 rounded-full">ඉක්මනින් එනවා</span>
-                <h3 className="text-gray-900 font-bold text-lg mt-2 mb-1">AI & Machine Learning</h3>
-                <p className="text-gray-500 text-sm mb-4">කෘත්‍රිම බුද්ධිමත්කාමයේ미래 ගවේෂණය කරන්න</p>
-                <button disabled className="w-full bg-gray-200 text-gray-400 text-sm font-semibold py-2 rounded-lg cursor-not-allowed">
-                  ඉක්මනින් එනවා
-                </button>
-              </div>
-            </div>
-
-            {/* After Effects */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden opacity-70">
-              <div className="bg-gradient-to-br from-pink-400 to-pink-600 h-40 flex items-center justify-center">
-                <span className="text-6xl">🎬</span>
-              </div>
-              <div className="p-5">
-                <span className="bg-yellow-100 text-yellow-600 text-xs font-semibold px-2 py-1 rounded-full">ඉක්මනින් එනවා</span>
-                <h3 className="text-gray-900 font-bold text-lg mt-2 mb-1">After Effects</h3>
-                <p className="text-gray-500 text-sm mb-4">මෝෂන් ග්‍රැෆික්ස් සහ දෘශ්‍ය විශේෂ effects ඉගෙනගන්න</p>
-                <button disabled className="w-full bg-gray-200 text-gray-400 text-sm font-semibold py-2 rounded-lg cursor-not-allowed">
-                  ඉක්මනින් එනවා
-                </button>
-              </div>
-            </div>
-
-            {/* Photoshop */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden opacity-70">
-              <div className="bg-gradient-to-br from-orange-400 to-orange-600 h-40 flex items-center justify-center">
-                <span className="text-6xl">🖼️</span>
-              </div>
-              <div className="p-5">
-                <span className="bg-yellow-100 text-yellow-600 text-xs font-semibold px-2 py-1 rounded-full">ඉක්මනින් එනවා</span>
-                <h3 className="text-gray-900 font-bold text-lg mt-2 mb-1">Adobe Photoshop</h3>
-                <p className="text-gray-500 text-sm mb-4">වෘත්තීය ඡායාරූප සංස්කරණය සහ නිර්මාණය</p>
-                <button disabled className="w-full bg-gray-200 text-gray-400 text-sm font-semibold py-2 rounded-lg cursor-not-allowed">
-                  ඉක්මනින් එනවා
-                </button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
+        </section>
 
       {/* ===== FAQ SECTION ===== */}
       <section id="faq" className="py-20 px-6 bg-white">

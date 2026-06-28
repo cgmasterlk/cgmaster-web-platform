@@ -16,6 +16,7 @@ model User {
   name      String
   email     String   @unique
   password  String
+  phone     String?
   role      Role     @default(STUDENT)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -31,6 +32,7 @@ model Course {
   description String?
   thumbnail   String?
   price       Float    @default(0)
+  status      String   @default("coming_soon")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
