@@ -97,7 +97,7 @@ export default function AdminCoursesPage() {
     <div className="min-h-screen bg-gray-50">
       <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between sticky top-0 z-50">
         <Link href="/admin">
-          <Image src="/logo.png" alt="CG Master" width={120} height={40} className="object-contain" />
+          <Image src="/logo.png" alt="CG Master" width={120} height={29} className="object-contain" />
         </Link>
         <div className="flex items-center gap-3">
           <Link href="/admin" className="text-sm text-gray-600 hover:text-purple-600 transition-colors">← Dashboard</Link>
