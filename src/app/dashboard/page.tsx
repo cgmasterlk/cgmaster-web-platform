@@ -30,7 +30,7 @@ export default async function DashboardPage() {
       {/* Navbar */}
       <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between sticky top-0 z-50">
         <Link href="/">
-          <Image src="/logo.png" alt="CG Master" width={130} height={40} className="object-contain" />
+          <Image src="/logo.png" alt="CG Master" width={130} height={31} className="object-contain" />
         </Link>
         <div className="flex items-center gap-4">
           <span className="text-sm text-gray-600">👋 ආයුබෝවන්, {session.user.name}!</span>

@@ -10,7 +10,7 @@ export default function Navbar() {
           src="/logo.png"
           alt="CG Master Logo"
           width={160}
-          height={50}
+          height={39}
           className="object-contain"
           priority
         />

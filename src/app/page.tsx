@@ -18,7 +18,7 @@ export default async function Home() {
       {/* ===== NAVBAR ===== */}
       <nav className="w-full bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between sticky top-0 z-50 shadow-sm">
         <a href="/">
-          <Image src="/logo.png" alt="CG Master" width={140} height={45} className="object-contain" priority />
+          <Image src="/logo.png" alt="CG Master" width={140} height={34} className="object-contain" priority />
         </a>
         <div className="hidden md:flex items-center gap-8">
           <a href="#courses" className="text-gray-600 hover:text-purple-600 text-sm font-medium transition-colors">Courses</a>
@@ -225,7 +225,7 @@ export default async function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
-              <Image src="/logo.png" alt="CG Master" width={130} height={40} className="object-contain mb-4" />
+              <Image src="/logo.png" alt="CG Master" width={130} height={31} className="object-contain mb-4" />
               <p className="text-gray-400 text-sm leading-relaxed">
                 ශ්‍රී ලංකාවේ ප්‍රමුඛ CG ඉගෙනුම් වේදිකාව. සිංහල මාධ්‍යයෙන් ජාත්‍යන්තර මට්ටමේ කුසලතා.
               </p>

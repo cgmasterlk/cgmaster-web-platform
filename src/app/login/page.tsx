@@ -57,7 +57,7 @@ export default function LoginPage() {
 
         {/* Logo */}
         <div className="flex justify-center mb-8">
-          <Image src="/logo.png" alt="CG Master" width={150} height={50} className="object-contain brightness-0 invert" />
+          <Image src="/logo.png" alt="CG Master" width={150} height={36} loading="eager" className="object-contain brightness-0 invert" />
         </div>
 
         <h1 className="text-2xl font-bold text-white text-center mb-1">ඔබේ ගිණුමට පිවිසෙන්න</h1>
