@@ -26,11 +26,15 @@ export default function AdminCoursesPage() {
 
   useEffect(() => { fetchCourses(); }, []);
 
-  async function fetchCourses() {
+ async function fetchCourses() {
     setLoading(true);
     const res = await fetch("/api/admin/courses");
+    if (!res.ok) {
+      setLoading(false);
+      return;
+    }
     const data = await res.json();
-    setCourses(data);
+    setCourses(Array.isArray(data) ? data : []);
     setLoading(false);
   }
 
